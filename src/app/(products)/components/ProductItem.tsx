@@ -1,7 +1,7 @@
 import Button from "@/app/components/Button"
 import Image from "next/image"
 import { Subtitle } from "@/app/components/Title"
-import { IProduct } from "@/app/types/IProduct"
+import { IProduct } from "@/Domain/Product/IProduct"
 
 const ProductItem = ({ product, ...props }: { product: IProduct }) =>
     <li {...props} className="bg-slate-900 flex flex-col gap-2 basis-[48%] sm:basis-[32%]" >

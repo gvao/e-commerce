@@ -1,5 +1,5 @@
 import ProductItem from "./ProductItem"
-import { products } from "../constants/products"
+import { products } from "../../../Domain/Product"
 
 export default function ProductList() {
     return <>
