@@ -1,6 +1,5 @@
 import { IProduct } from "@/Domain/Product/IProduct";
 
-
 export default class Product implements IProduct {
     id: string;
     name: string;
@@ -19,14 +18,15 @@ export default class Product implements IProduct {
         return new Product({ id, name, price, src });
     }
 
+    get dto() {
+        return {
+            id: this.id,
+            name: this.name,
+            price: this.price,
+            src: this.src,
+        };
+    }
 }
 
 type ProductProps = Pick<IProduct, 'id' | 'name' | 'price' | 'src'>
 type ProductCreateProps = Omit<ProductProps, "id">
-
-
-export const products: IProduct[] = [
-    Product.create({ name: 'S21 fe', price: 1700.50, src: "/s21-fe.jpg" }),
-    Product.create({ name: 'any_name', price: 50, src: "/s21-fe.jpg" }),
-    Product.create({ name: 'outer_name', price: 100, src: "/s21-fe.jpg" }),
-]
