@@ -1,6 +1,5 @@
-import GetAll from "@/application/repository/GetAll";
-import Save from "@/application/repository/Save";
-import { IProduct } from "@/Domain/Product/IProduct";
+import { Save, GetAll } from "@/application/repository";
+import { IProduct } from "@/Domain/Product/interface";
 
 export default class ProductRepository implements Repository {
     async save(product: IProduct): Promise<void> {

@@ -14,10 +14,6 @@ const getAllProducts = new GetAllProducts(productRepository);
 })()
 
 export async function GET() {
-
     const products = await getAllProducts.execute()
-
-    return NextResponse.json({
-        products
-    })
+    return NextResponse.json({ products })
 }
