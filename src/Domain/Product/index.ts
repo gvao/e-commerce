@@ -1,19 +1,20 @@
-import { IProduct } from "@/Domain/Product/IProduct";
+import { IProduct, IProductCreateProps, IProductProps } from "@/Domain/Product/interface";
+import Price from "../../ValueObject/Price";
 
 export default class Product implements IProduct {
     id: string;
     name: string;
-    price: number;
+    price: Price;
     src: string;
 
-    constructor({ id, name, price, src }: ProductProps) {
+    constructor({ id, name, price, src }: IProductProps) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.price = new Price(price);
         this.src = src;
     }
 
-    static create({ name, price, src }: ProductCreateProps) {
+    static create({ name, price, src }: IProductCreateProps) {
         const id = crypto.randomUUID().toString();
         return new Product({ id, name, price, src });
     }
@@ -22,11 +23,8 @@ export default class Product implements IProduct {
         return {
             id: this.id,
             name: this.name,
-            price: this.price,
+            price: this.price.value,
             src: this.src,
         };
     }
 }
-
-type ProductProps = Pick<IProduct, 'id' | 'name' | 'price' | 'src'>
-type ProductCreateProps = Omit<ProductProps, "id">
