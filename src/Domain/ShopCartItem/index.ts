@@ -1,15 +1,24 @@
-import { IProduct } from "../Product/IProduct"
-import IShopCartItem, { StoreCartItemProps, StoreItemCreateProps } from "./interface"
+import { IProductDto } from "../Product/interface"
+import IShopCartItem, { IShopCartItemDto, StoreCartItemProps, StoreItemCreateProps } from "./interface"
 
 export default class ShopCartItem implements IShopCartItem {
     id: string
     quantity: number
-    product: IProduct
+    product: IProductDto
     
     constructor({ id, product, quantity }: StoreCartItemProps) {
         this.id = id
         this.product = product
         this.quantity = quantity
+    }
+
+    get dto(): IShopCartItemDto {
+        return {
+            id: this.id,
+            product: this.product,
+            quantity: this.quantity,
+            totalPrice: this.totalPrice,
+        }
     }
     
     get totalPrice(): number {
