@@ -9,7 +9,7 @@ describe("InsertItemShopCart", () => {
     it('insert one item in shopCart', async () => {
         const product = Product.create({ name: 'any_name', price: 100, src: 'any_src' })
         const quantity = 2
-        await insertShopCartItem.execute({ product, quantity })
+        await insertShopCartItem.execute({ product: product.dto, quantity })
         expect(await shopCartItemRepository.getAll()).toHaveLength(1)
     })
 })
