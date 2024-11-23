@@ -10,7 +10,7 @@ describe("InsertItemShopCart", () => {
     beforeAll(async () => {
         const quantity = 2
         const product = Product.create({ name: 'any_name', price: 100, src: 'any_src' })
-        const shopCartItem = ShopCartItem.create({ product, quantity })
+        const shopCartItem = ShopCartItem.create({ product: product.dto, quantity })
         shopCartItemRepository.save(shopCartItem)
     })
 

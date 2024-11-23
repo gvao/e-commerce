@@ -1,17 +1,17 @@
-import IShopCartItem from "../../Domain/ShopCartItem/interface";
+import { IShopCartItemDto } from "../../Domain/ShopCartItem/interface";
 import UseCase from "./interface";
 import ShopCartItem from "../../Domain/ShopCartItem";
-import GetAll from "../../application/repository/GetAll"    
+import { GetAll } from "../../application/repository"
 
 export default class GetShopCartItems implements UseCase<Input, Output> {
-    constructor(private shopCartItemRepository: Repository ){}
+    constructor(private shopCartItemRepository: Repository) { }
 
     async execute(): Promise<Output> {
         const shopCartItems = await this.shopCartItemRepository.getAll()
-        return shopCartItems
+        return shopCartItems?.map(shopCartItem => shopCartItem.dto)
     }
 }
 
 type Input = void
-type Output = IShopCartItem[] | undefined
+type Output = IShopCartItemDto[] | undefined
 type Repository = GetAll<ShopCartItem>
