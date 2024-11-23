@@ -19,7 +19,7 @@ const Popup = ({ children, pathOnClose }: ChildrenProps & { pathOnClose: string 
                         className="cursor-pointer aspect-square absolute -top-2 -right-2 bg-white rounded-full w-6 h-6 text-center"
                         data-out="true"
                     >X</div>
-                    <p>{children}</p>
+                    {children}
                 </div>
             </div>
         </div>
