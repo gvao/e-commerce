@@ -1,3 +1,3 @@
-export default interface Save<Input> {
+export interface Save<Input> {
     save(input: Input): Promise<void>
 }

@@ -1,3 +1,3 @@
-export default interface GetAll<Output> {
+export interface GetAll<Output> {
     getAll(): Promise<Output[] | undefined>
 }
