@@ -1,8 +1,14 @@
-import GetAll from "@/application/repository/GetAll";
-import Save from "@/application/repository/Save";
+import { DeleteById, GetAll, GetById, Save } from "@/application/repository";
 import IShopCartItem from "@/Domain/ShopCartItem/interface";
 
 export default class ShopCartItemRepository implements Repository {
+    async deleteById(id: string): Promise<void> {
+        this.items = this.items.filter(item => item.id !== id);
+    }
+
+    async getById(id: string): Promise<IShopCartItem | undefined> {
+        return this.items.find(item => item.id === id)
+    }
     async save(product: IShopCartItem): Promise<void> {
         this.items.push(product)
     }
@@ -12,4 +18,4 @@ export default class ShopCartItemRepository implements Repository {
     private items: IShopCartItem[] = []
 }
 
-type Repository = GetAll<IShopCartItem> & Save<IShopCartItem>
+type Repository = GetAll<IShopCartItem> & Save<IShopCartItem> & GetById<IShopCartItem> & DeleteById
