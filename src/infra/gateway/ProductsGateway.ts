@@ -1,10 +1,10 @@
-import { IProduct, IProductCreateProps } from "@/Domain/Product/interface"
+import {  IProductCreateProps, IProductDto } from "@/Domain/Product/interface"
 import Fetcher from "@/utils/Fetcher"
 
 export default class ProductsGateway {
     constructor(private fetcher: Fetcher) { }
 
-    async getAllProducts(): Promise<IProduct[]> {
+    async getAllProducts(): Promise<IProductDto[]> {
         const { products } = await this.fetcher.request('/api/products')
         return products
     }
