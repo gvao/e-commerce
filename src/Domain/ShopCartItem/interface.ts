@@ -6,8 +6,8 @@ export default interface IShopCartItem {
     product: IProductDto
     totalPrice: number
 
-    increaseQuantity(): void
-    decreaseQuantity(): void
+    increaseQuantity(quantity: number): void
+    decreaseQuantity(quantity: number): void
 
     dto: IShopCartItemDto
 }

@@ -25,11 +25,11 @@ export default class ShopCartItem implements IShopCartItem {
         return this.product.price * this.quantity
     }
 
-    increaseQuantity(): void {
-        this.quantity += 1
+    increaseQuantity(quantity: number): void {
+        this.quantity += quantity
     }
-    decreaseQuantity(): void {
-        this.quantity -= 1
+    decreaseQuantity(quantity: number): void {
+        this.quantity -= quantity
     }
 
     static create({ product, quantity }: StoreItemCreateProps): ShopCartItem {
