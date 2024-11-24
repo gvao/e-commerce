@@ -18,8 +18,16 @@ export default class ShopCartGateway {
         const { item } = await this.fetcher.request(`/api/shopcart/${id}`)
         return item
     }
-
+    
     async deleteById(id: string): Promise<void> {
-        await this.fetcher.request(`/api/shopcart/${id}`, {}, "DELETE")
+        await this.fetcher.request(`/api/shopcart/${id}/delete`)
+    }
+    
+    async incrementQuantityById(id: string, quantity: number) {
+        await this.fetcher.request(`/api/shopcart/${id}/increment`, { quantity })
+    }
+    
+    async decrementQuantityById(id: string, quantity: number) { 
+        await this.fetcher.request(`/api/shopcart/${id}/decrement`, { quantity })
     }
 }
