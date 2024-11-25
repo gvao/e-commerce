@@ -3,11 +3,11 @@ import { beforeAll, describe, expect, it } from "vitest";
 import Product from "../../Domain/Product";
 import ShopCartItem from "../../Domain/ShopCartItem";
 import ShopCartItemRepository from "../../infra/repositories/ShopCartItemRepository";
-import IncrementQuantityShopCartItemById from "../../application/UseCases/IncrementQuantityShopCartItemById";
+import IncreaseQuantityShopCartItemById from "../../application/UseCases/IncreaseQuantityShopCartItemById";
 
-describe("incrementQuantityShopCartItemById", () => {
+describe("IncreaseQuantityShopCartItemById", () => {
     const shopCartItemRepository = new ShopCartItemRepository()
-    const incrementQuantityShopCartItemById = new IncrementQuantityShopCartItemById(shopCartItemRepository)
+    const increaseQuantityShopCartItemById = new IncreaseQuantityShopCartItemById(shopCartItemRepository)
     let fakeId = ''
     beforeAll(async () => {
         const quantity = 1
@@ -18,7 +18,7 @@ describe("incrementQuantityShopCartItemById", () => {
     })
 
     it('increment quantity shopCartItem', async () => {
-        await incrementQuantityShopCartItemById.execute({id: fakeId, quantity: 1})
+        await increaseQuantityShopCartItemById.execute({id: fakeId, quantity: 1})
         const shopCartItem = await  shopCartItemRepository.getById(fakeId)
         expect(shopCartItem?.quantity).toBe(2)
     })
