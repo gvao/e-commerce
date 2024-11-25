@@ -7,5 +7,6 @@ const deleteShopCartItemById = dependencies.getDependency<DeleteShopCartItemById
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const { id } = (await params)
     await deleteShopCartItemById.execute(id)
+    console.log(`deleting ${id}`)
     return NextResponse.json({ message: 'Item deleted successfully'})
 }
