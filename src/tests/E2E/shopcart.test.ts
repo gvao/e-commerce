@@ -21,15 +21,25 @@ describe("E2E", () => {
         fakeId = items[0].id
     })
 
-    it("GET:api/shopcart/:id", async () => {
-        const item = await shopCartGateway.getById(fakeId!)
-        expect(item?.id).toBe(fakeId)
+    describe('api/shopcart/:id', () => {
+
+        it("GET:id", async () => {
+            const item = await shopCartGateway.getById(fakeId!)
+            expect(item?.id).toBe(fakeId)
+        })
+
+        it("POST:id/increment", async () => {
+            await shopCartGateway.incrementQuantityById(fakeId, 2)
+            const item = await shopCartGateway.getById(fakeId!)
+            expect(item?.quantity).toBe(4)
+        })
+
+        it("GET:id/delete", async () => {
+            await shopCartGateway.deleteById(fakeId)
+            const item = await shopCartGateway.getById(fakeId!)
+            expect(item).toBeFalsy()
+        })
     })
 
-    it("GET GET:api/shopcart/:id/delete", async () => {
-        await shopCartGateway.deleteById(fakeId)
-        const item = await shopCartGateway.getById(fakeId!)
-        expect(item).toBeFalsy()
-    })
 
 })

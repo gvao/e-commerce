@@ -3,31 +3,32 @@ import { IShopCartItemDto, StoreItemCreateProps } from "@/Domain/ShopCartItem/in
 import Fetcher from "@/utils/Fetcher"
 
 export default class ShopCartGateway {
+    pathDefault = '/api/shopcart'
     constructor(private fetcher: Fetcher) { }
 
     async getShopCartItems(): Promise<ShopCartItem[]> {
-        const { items } = await this.fetcher.request('/api/shopcart')
+        const { items } = await this.fetcher.request(this.pathDefault)
         return items
     }
 
     async addShopCartItem({ product, quantity }: StoreItemCreateProps): Promise<void> {
-        await this.fetcher.request('/api/shopcart', { product, quantity })
+        await this.fetcher.request(this.pathDefault, { product, quantity })
     }
 
     async getById(id: string): Promise<IShopCartItemDto | undefined> {
-        const { item } = await this.fetcher.request(`/api/shopcart/${id}`)
+        const { item } = await this.fetcher.request(`${this.pathDefault}/${id}`)
         return item
     }
     
     async deleteById(id: string): Promise<void> {
-        await this.fetcher.request(`/api/shopcart/${id}/delete`)
+        await this.fetcher.request(`${this.pathDefault}/${id}/delete`)
     }
     
     async incrementQuantityById(id: string, quantity: number) {
-        await this.fetcher.request(`/api/shopcart/${id}/increment`, { quantity })
+        await this.fetcher.request(`${this.pathDefault}/${id}/increase`, { quantity })
     }
     
     async decrementQuantityById(id: string, quantity: number) { 
-        await this.fetcher.request(`/api/shopcart/${id}/decrement`, { quantity })
+        await this.fetcher.request(`${this.pathDefault}/${id}/decrease`, { quantity })
     }
 }

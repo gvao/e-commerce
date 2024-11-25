@@ -6,6 +6,7 @@ import GetShopCartItemById from "@/application/UseCases/GetShopCartItemById";
 import DeleteShopCartItemById from "@/application/UseCases/DeleteShopCartItemById";
 import Fetcher from "@/utils/Fetcher";
 import ShopCartGateway from "../gateway/ShopCartGateway";
+import IncreaseQuantityShopCartItemById from "@/application/UseCases/IncreaseQuantityShopCartItemById";
 
 const dependencies = new Dependencies()
 
@@ -17,11 +18,13 @@ const insertShopCartItem = new InsertShopCartItem(shopCartItemRepository)
 const getShopCartItems = new GetShopCartItems(shopCartItemRepository)
 const getShopCartItemById = new GetShopCartItemById(shopCartItemRepository)
 const deleteShopCartItemById = new DeleteShopCartItemById(shopCartItemRepository)
+const increaseQuantityShopCartItemById = new IncreaseQuantityShopCartItemById(shopCartItemRepository)
 
 dependencies.cadasterDependency('insertShopCartItem', insertShopCartItem)
 dependencies.cadasterDependency('getShopCartItems', getShopCartItems)
 dependencies.cadasterDependency('getShopCartItemById', getShopCartItemById)
 dependencies.cadasterDependency('deleteShopCartItemById', deleteShopCartItemById)
 dependencies.cadasterDependency('shopCartGateway', shopCartGateway)
+dependencies.cadasterDependency('increaseQuantityShopCartItemById', increaseQuantityShopCartItemById)
 
 export default dependencies
