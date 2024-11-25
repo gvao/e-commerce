@@ -34,6 +34,13 @@ describe("E2E", () => {
             expect(item?.quantity).toBe(4)
         })
 
+
+        it("POST:id/decrement", async () => {
+            await shopCartGateway.decrementQuantityById(fakeId, 1)
+            const item = await shopCartGateway.getById(fakeId!)
+            expect(item?.quantity).toBe(3)
+        })
+
         it("GET:id/delete", async () => {
             await shopCartGateway.deleteById(fakeId)
             const item = await shopCartGateway.getById(fakeId!)
