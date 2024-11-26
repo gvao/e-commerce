@@ -13,7 +13,7 @@ export default interface IShopCartItem {
 }
 
 export type StoreCartItemProps = Pick<IShopCartItem, 'id' | 'product' | 'quantity'>
-export type StoreItemCreateProps = Omit<StoreCartItemProps, 'id'>
+export type StoreItemCreateProps = { product: IProductDto, quantity: number }
 export type IShopCartItemDto = {
     id: string
     quantity: number

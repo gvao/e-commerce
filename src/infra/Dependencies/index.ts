@@ -8,14 +8,16 @@ import Fetcher from "@/utils/Fetcher";
 import ShopCartGateway from "../gateway/ShopCartGateway";
 import IncreaseQuantityShopCartItemById from "@/application/UseCases/IncreaseQuantityShopCartItemById";
 import DecreaseQuantityShopCartItemById from "@/application/UseCases/DecreaseQuantityShopCartItemById";
+import ProductRepository from "../repositories/ProductRepository";
 
 const dependencies = new Dependencies()
 
 const shopCartItemRepository = new ShopCartItemRepository
+const productRepository = new ProductRepository
 const fetcher = new Fetcher(process.env.URL_BASE)
 const shopCartGateway = new ShopCartGateway(fetcher)
 
-const insertShopCartItem = new InsertShopCartItem(shopCartItemRepository)
+const insertShopCartItem = new InsertShopCartItem(shopCartItemRepository, productRepository)
 const getShopCartItems = new GetShopCartItems(shopCartItemRepository)
 const getShopCartItemById = new GetShopCartItemById(shopCartItemRepository)
 const deleteShopCartItemById = new DeleteShopCartItemById(shopCartItemRepository)

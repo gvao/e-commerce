@@ -1,5 +1,5 @@
 import ShopCartItem from "@/Domain/ShopCartItem"
-import { IShopCartItemDto, StoreItemCreateProps } from "@/Domain/ShopCartItem/interface"
+import { IShopCartItemDto } from "@/Domain/ShopCartItem/interface"
 import Fetcher from "@/utils/Fetcher"
 
 export default class ShopCartGateway {
@@ -11,8 +11,8 @@ export default class ShopCartGateway {
         return items
     }
 
-    async addShopCartItem({ product, quantity }: StoreItemCreateProps): Promise<void> {
-        await this.fetcher.request(this.pathDefault, { product, quantity })
+    async addShopCartItem({ productId, quantity }: { productId: string, quantity: number }): Promise<void> {
+        await this.fetcher.request(this.pathDefault, { productId, quantity })
     }
 
     async getById(id: string): Promise<IShopCartItemDto | undefined> {
