@@ -9,7 +9,7 @@ export default class ProductsGateway {
         return products
     }
 
-    async addNewProduct({ name, price, src }: IProductCreateProps): Promise<void> {
+    async addProduct({ name, price, src }: IProductCreateProps): Promise<void> {
         await this.fetcher.request('/api/products', { name, price, src })
     }
 }
