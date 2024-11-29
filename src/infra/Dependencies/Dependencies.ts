@@ -1,11 +1,13 @@
 export default class Dependencies {
-    static readonly dependencies: Record<string, unknown> = {}
+    static readonly dependencies: Map<string, any> = new Map()
 
-    getDependency<T>(dependencyName: keyof typeof Dependencies.dependencies) {
-        return Dependencies.dependencies[dependencyName] as T
+    getDependency<T>(dependencyName: string): T {
+        if (!Dependencies.dependencies.has(dependencyName)) throw new Error(`dependency ${dependencyName} not found`)
+        return Dependencies.dependencies.get(dependencyName)
     }
 
     cadasterDependency(dependencyName: string, dependency: unknown) {
-        Dependencies.dependencies[dependencyName] = dependency
+        Dependencies.dependencies.set(dependencyName, dependency)
     }
 }
+
