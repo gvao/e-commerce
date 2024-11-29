@@ -2,7 +2,7 @@ import IShopCartItem from "@/Domain/ShopCartItem/interface"
 import { GetById, Save } from "../repository"
 import UseCase from "./interface"
 
-export default class IncreaseQuantityShopCartItemById implements UseCase<Input, Output> {
+export class IncreaseQuantityShopCartItemById implements UseCase<Input, Output> {
     constructor(private repository: repository) { }
 
     async execute({ id, quantity }: Input): Promise<void> {

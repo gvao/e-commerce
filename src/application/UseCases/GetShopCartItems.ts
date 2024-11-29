@@ -3,7 +3,7 @@ import UseCase from "./interface";
 import ShopCartItem from "../../Domain/ShopCartItem";
 import { GetAll } from "../../application/repository"
 
-export default class GetShopCartItems implements UseCase<Input, Output> {
+export class GetShopCartItems implements UseCase<Input, Output> {
     constructor(private shopCartItemRepository: Repository) { }
 
     async execute(): Promise<Output> {

@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest"
 
-import GetAllProducts from "../../application/UseCases/GetAllProducts"
+import {GetAllProducts} from "../../application/UseCases"
 import ProductRepository from "../../infra/repositories/ProductRepository"
 import Product from "../../Domain/Product"
 

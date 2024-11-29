@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 import Product from "../../Domain/Product";
 import ShopCartItem from "../../Domain/ShopCartItem";
 import ShopCartItemRepository from "../../infra/repositories/ShopCartItemRepository";
-import DeleteShopCartItemById from "../../application/UseCases/DeleteShopCartItemById";
+import {DeleteShopCartItemById} from "../../application/UseCases";
 
 describe('DeleteShopCartItem', () => {
     const shopCartItemRepository = new ShopCartItemRepository()

@@ -1,5 +1,5 @@
 import ProductRepository from "../../infra/repositories/ProductRepository";
-import InsertShopCartItem from "../../application/UseCases/InsertShopCartItem";
+import {InsertShopCartItem} from "../../application/UseCases";
 import Product from "../../Domain/Product";
 import ShopCartItemRepository from "../../infra/repositories/ShopCartItemRepository";
 import { beforeAll, describe, expect, it } from "vitest";
