@@ -1,18 +1,20 @@
 import { describe, expect, it } from "vitest";
 
 import Fetcher from "../../utils/Fetcher";
-import Product from "../../Domain/Product";
 import ShopCartGateway from "../../infra/gateway/ShopCartGateway";
+import ProductsGateway from "../../infra/gateway/ProductsGateway";
 
 describe("E2E", () => {
     const fetcher = new Fetcher()
     const shopCartGateway = new ShopCartGateway(fetcher)
+    const productsGateway = new ProductsGateway(fetcher)
 
     let fakeId: string
 
     it("POST:api/shopcart", async () => {
-        const product = Product.create({ name: 'any_name', price: 1, src: 'any_src' })
-        await shopCartGateway.addShopCartItem({ quantity: 2, product: product.dto })
+        const [product] = await productsGateway.getAllProducts()
+        fakeId = product.id
+        await shopCartGateway.addShopCartItem({ quantity: 2, productId: fakeId })
     })
 
     it("GET:api/shopcart", async () => {
