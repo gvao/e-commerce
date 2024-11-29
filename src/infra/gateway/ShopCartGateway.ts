@@ -6,7 +6,7 @@ export default class ShopCartGateway {
     pathDefault = '/api/shopcart'
     constructor(private fetcher: Fetcher) { }
 
-    async getShopCartItems(): Promise<ShopCartItem[]> {
+    async getShopCartItems(): Promise<IShopCartItemDto[]> {
         const { items } = await this.fetcher.request(this.pathDefault)
         return items
     }
