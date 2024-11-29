@@ -1,4 +1,4 @@
-import Price from "@/ValueObject/Price";
+import Price from "@/Domain/ValueObject/Price";
 
 export interface IProduct {
     id: string;

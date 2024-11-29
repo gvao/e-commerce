@@ -1,5 +1,5 @@
 import { IProduct, IProductCreateProps, IProductProps } from "@/Domain/Product/interface";
-import Price from "../../ValueObject/Price";
+import Price from "../ValueObject/Price";
 
 export default class Product implements IProduct {
     id: string;
